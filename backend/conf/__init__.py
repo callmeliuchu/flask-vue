@@ -1,0 +1,22 @@
+REDIS_KEY_PREFIX = "dev:recommendapi_v2:hot_org_tags"
+
+# REDIS_HOST = '10.10.69.153'
+# REDIS_PORT = 6379
+# REDIS_DB = 0
+# REDIS_PASSWORD = 'YXTsip.fhgj2910'
+
+# redis://:YDVpwdasdwx2910@10.10.96.165:6379
+REDIS_HOST = '10.10.96.165'
+REDIS_PORT = 6379
+REDIS_DB = 14
+REDIS_PASSWORD = 'YDVpwdasdwx2910'
+
+REDIS_PUBLISH_EX = 3600 * 24 * 1  # 1 day
+
+UPDATE_REPO_FROM = '10 minute ago'
+
+
+
+APP_ID = '10853774'
+API_KEY = 'I6lDTr6qMcY8VNfHwTRzbePh'
+SECRET_KEY = 'eAIqhWUy8dOZYtBcbGm84hdDRA2jLzwe'

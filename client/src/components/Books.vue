@@ -8,7 +8,7 @@
         <button type="button" class="btn btn-success btn-sm" v-b-modal.book-modal>Add Book</button>
         <br><br>
         <table class="table table-hover">
-          <thead>
+          <thead class="w-100">
           <tr>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
