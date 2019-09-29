@@ -17,6 +17,8 @@ class Posts(Model):
     username = peewee.CharField(max_length=200)
     content = peewee.TextField()
     belong_to_post_id = peewee.IntegerField()
+    parent_post_id = peewee.IntegerField()
+    title = peewee.CharField(max_length=255)
     date_created = peewee.DateTimeField(
         formats='%Y-%m-%d %H:%M:%S',
         default=datetime.now
@@ -60,6 +62,20 @@ class Forum(Model):
     class Meta:
         database = db
         db_table = 'forums'
+
+
+
+class PostTypeCategory(Model):
+    id = peewee.IntegerField()
+    category = peewee.IntegerField()
+    type = peewee.IntegerField()
+    desc = peewee.CharField(max_length=200)
+
+
+    class Meta:
+        database = db
+        db_table = 'post_type_category'
+
 
 
 def create_table(table):
@@ -125,6 +141,65 @@ def get_topic_tree():
     return final_list
 
 
+
+
+def get_posts_struct(post_id):
+    r = PostTypeCategory.select()
+    type2category = {}
+    for v in r:
+        type2category[v.type] = v.category
+
+
+
+    r = Posts.select().where(Posts.belong_to_post_id == post_id).order_by(Posts.id)
+
+    parent_children = defaultdict(list)
+    posts = {}
+
+    for v in r:
+        post_dict = model_to_dict(v)
+        parent_children[v.parent_post_id].append(post_dict)
+        posts[v.id] = post_dict
+
+    arr = []
+    while True:
+        children = parent_children[post_id]
+        post_info = defaultdict(list)
+        main_post = posts[post_id]
+        post_info['post_main'].append(main_post)
+        has_next_parent = False
+        for child in children:
+            if child['type'] == 6:
+                post_id = child['id']
+                has_next_parent = True
+            else:
+                category = type2category[child['type']]
+                key = 'post_{}'.format(category)
+                post_info[key].append(child)
+        arr.append(post_info)
+        if not has_next_parent:
+            break
+
+    return arr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# res = get_posts_struct()
+# print(res)
 
 
 

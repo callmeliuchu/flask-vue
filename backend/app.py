@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import uuid
-from backend.models.model import Posts,get_topic_posts,get_topic_tree
+from backend.models.model import Posts,get_topic_posts,get_topic_tree,get_posts_struct
 from backend.models.moment_model import Moment,MomentTag
 from backend.publish.redis_pub import fetch_hot_tags
 
@@ -177,6 +177,17 @@ def topic_posts(topic_id):
 def topic_tree():
     tree = get_topic_tree()
     return jsonify(tree)
+
+
+
+@app.route('/poststruct/<int:post_id>')
+def posts_struct(post_id):
+    arr = get_posts_struct(post_id)
+    data = {
+
+    }
+    data['posts_struct'] = arr
+    return jsonify(data)
 
 
 

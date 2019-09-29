@@ -9,6 +9,8 @@ import Login from '@/components/Login';
 import Home from "@/components/Home";
 import TopicLatestPosts from "@/components/TopicLatestPosts";
 import TopicTree from "@/components/TopicTree";
+import PostsStruct from "@/components/PostsStruct";
+import Post from '@/components/Post';
 
 Vue.use(Router);
 
@@ -55,9 +57,19 @@ export default new Router({
       component: TopicLatestPosts,
     },
     {
-      path: '/topictree',
+      path: '/',
       name: 'TopicTree',
       component: TopicTree,
+    },
+    {
+      path: '/poststruct/:id',
+      name: 'PostsStruct',
+      component: PostsStruct,
+    },
+    {
+      path:'/post',
+      name: 'Post',
+      component:Post,
     },
   ],
   mode: 'hash',

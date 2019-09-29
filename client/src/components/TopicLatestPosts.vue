@@ -17,10 +17,10 @@
       <hr/>
       <div v-for="(post,index) in posts" :key="index">
         <div class="row">
-          <div class="col-xs-12"><p>{{ post.title }}</p></div>
+          <div class="col-xs-12"><p @click="getDetail(post)">{{ post.title }}</p></div>
         </div>
         <div class="row">
-          <div class="col-xs-12"><p>{{ post.content }}</p></div>
+          <div class="col-xs-12"><p @click="getDetail(post)">{{ post.content }}</p></div>
         </div>
         <div class="row">
           <div class="col-xs-12"><p>{{ post.date_created }}</p></div>
@@ -56,6 +56,9 @@
              console.log(error);
              })
        },
+       getDetail(post){
+         this.$router.push({name:'PostsStruct',params:{id:post.belong_to_post_id}})
+       }
     },
     // methods: {
     //   getParams () {
