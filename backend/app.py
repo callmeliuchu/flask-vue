@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import uuid
-from backend.models.model import Posts,get_topic_posts,get_topic_tree,get_posts_struct
+from backend.models.model import *
 from backend.models.moment_model import Moment,MomentTag
 from backend.publish.redis_pub import fetch_hot_tags
 
@@ -13,7 +13,7 @@ DEBUG = True
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-
+app.config['JSON_AS_ASCII'] = False
 
 def register_blueprints(app):
     """ Register Blueprints. """
@@ -188,6 +188,25 @@ def posts_struct(post_id):
     }
     data['posts_struct'] = arr
     return jsonify(data)
+
+
+@app.route('/topic/new',methods=['POST'])
+def topic_new():
+    print('aaaaaa')
+    post_data = request.get_json()
+    v = Topic(
+        forum_id = 1,
+        title = 'hahahha',
+        description = 'aaaaaaaa',
+        username='哈哈哈',
+        user_id=1
+    )
+    v.save()
+    data = {}
+    data['status'] = 'success'
+    return jsonify(data)
+
+
 
 
 

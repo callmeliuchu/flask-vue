@@ -39,12 +39,63 @@ class Categories(Model):
         db_table = 'categories'
 
 
-
+# create table topics
+# (
+#   hidden        BOOLEAN,
+#   hidden_at     DATETIME,
+#   id            INTEGER      not null
+#     constraint pk_topics
+#     primary key,
+#   forum_id      INTEGER      not null
+#     constraint fk_topics_forum_id_forums
+#     references forums
+#       on delete cascade,
+#   title         VARCHAR(255) not null,
+#   description   TEXT         not null,
+#   user_id       INTEGER
+#     constraint fk_topics_user_id_users
+#     references users,
+#   username      VARCHAR(200) not null,
+#   date_created  DATETIME     not null,
+#   last_updated  DATETIME     not null,
+#   locked        BOOLEAN      not null,
+#   important     BOOLEAN      not null,
+#   views         INTEGER      not null,
+#   post_count    INTEGER      not null,
+#   first_post_id INTEGER
+#     constraint fk_topics_first_post_id_posts
+#     references posts
+#       on delete cascade,
+#   last_post_id  INTEGER
+#     constraint fk_topics_last_post_id_posts
+#     references posts,
+#   hidden_by_id  INTEGER
+#     constraint fk_Topic_hidden_by
+#     references users,
+#   check (hidden IN (0, 1)),
+#   check (important IN (0, 1)),
+#   check (locked IN (0, 1))
+# );
 class Topic(Model):
     id = peewee.IntegerField()
     forum_id = peewee.IntegerField()
     title = peewee.CharField(max_length=200)
     description = peewee.TextField()
+    hidden = peewee.BooleanField(default=False)
+    hidden_at = peewee.DateTimeField(default=datetime.now())
+    user_id = peewee.IntegerField()
+    username = peewee.CharField(max_length=200)
+    date_created = peewee.DateTimeField(default=datetime.now())
+    last_updated = peewee.DateTimeField(default=datetime.now())
+    locked = peewee.BooleanField(default=False)
+    important = peewee.BooleanField(default=False)
+    views = peewee.IntegerField(default=0)
+    post_count = peewee.IntegerField(default=0)
+    first_post_id = peewee.IntegerField(default=-1)
+    last_post_id = peewee.IntegerField(default=-1)
+    hidden_by_id = peewee.IntegerField(default=-1)
+
+
 
 
     class Meta:
@@ -163,6 +214,7 @@ def get_posts_struct(post_id):
 
     arr = []
     while True:
+
         children = parent_children[post_id]
         post_info = defaultdict(list)
         main_post = posts[post_id]
@@ -188,6 +240,14 @@ def get_posts_struct(post_id):
 
 
 
+v = Topic(
+    forum_id = 1,
+    title = 'hahahha',
+    description = 'aaaaaaaa',
+    username='哈哈哈',
+    user_id=1
+)
+v.save()
 
 
 

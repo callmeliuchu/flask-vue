@@ -67,6 +67,9 @@
     <b-button type="reset" variant="danger">Reset</b-button>
       </b-form>
     </b-modal>
+
+
+
         <b-modal ref="updateBookModal"
              id="book-update-modal"
              title="update a new book"

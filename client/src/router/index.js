@@ -11,6 +11,7 @@ import TopicLatestPosts from "@/components/TopicLatestPosts";
 import TopicTree from "@/components/TopicTree";
 import PostsStruct from "@/components/PostsStruct";
 import Post from '@/components/Post';
+import TopicNew from '@/components/TopicNew';
 
 Vue.use(Router);
 
@@ -70,6 +71,11 @@ export default new Router({
       path:'/post',
       name: 'Post',
       component:Post,
+    },
+    {
+      path:'/topic/new',
+      name: 'TopicNew',
+      component:TopicNew,
     },
   ],
   mode: 'hash',
