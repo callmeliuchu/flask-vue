@@ -11,7 +11,7 @@ db = SqliteDatabase('/home/liuchu/flask-forum/flask_forum.sqlite')
 
 class Posts(Model):
     id = peewee.IntegerField()
-    topic_id = peewee.IntegerField()
+    question_id = peewee.IntegerField()
     user_id = peewee.IntegerField()
     type = peewee.IntegerField()
     username = peewee.CharField(max_length=200)
@@ -249,5 +249,18 @@ def get_team_topic_question_tree(team_id):
 
 
 # get_team_topic_question_tree(1)
+
+
+def get_question_posts(question_id):
+    data = {}
+    v = Question.select().where(Question.id == question_id).first()
+    data['question'] = model_to_dict(v)
+    r = Posts.select().where(Posts.question_id == question_id).group_by(Posts.belong_to_post_id)
+    ids = [v.belong_to_post_id for v in r]
+    data['posts'] = []
+    for b_id in ids:
+        v = Posts.select().where(Posts.type.in_([6,1])).where(Posts.belong_to_post_id == b_id).order_by(Posts.id.desc()).first()
+        data['posts'].append(model_to_dict(v))
+    return data
 
 

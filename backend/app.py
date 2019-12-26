@@ -4,7 +4,7 @@ import uuid
 from backend.models.model import *
 from backend.models.moment_model import Moment,MomentTag
 from backend.publish.redis_pub import fetch_hot_tags
-from backend.models.new_forum_model import get_team_organization
+from backend.models.new_forum_model import get_team_organization,get_team_topic_question_tree,get_question_posts
 
 
 
@@ -225,7 +225,10 @@ def main_page():
     res['topic_tree'] = get_topic_tree()
     return jsonify(res)
 
-
+@app.route('/team/<int:team_id>/topic_tree',methods=['GET'])
+def get_topic_tree_by_team_id(team_id):
+    topic_tree = get_team_topic_question_tree(team_id)
+    return jsonify(topic_tree)
 
 
 
