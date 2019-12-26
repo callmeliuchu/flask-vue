@@ -13,15 +13,14 @@
         </ol>
       </nav>
 
-      <form>
+
         <div class="form-group">
           <input  class="form-control" placeholder="标题" v-model="title">
         </div>
         <div class="form-group">
           <textarea class="form-control"  rows="3" placeholder="内容" v-model="content"></textarea>
         </div>
-         <button type="submit" class="btn btn-primary" @click="onSubmit">Submit</button>
-      </form>
+         <button  class="btn btn-primary" @click="onSubmit()">提交</button>
   </div>
 </template>
 
@@ -35,9 +34,10 @@
       components: {Card},
       data() {
             return {
-                title: 'Hello world!',
-                content: 'this is the wrong',
-                category_name:''
+                title: '',
+                content: '',
+                category_name:'',
+                forum_id : -1,
             }
 
         },
@@ -46,10 +46,13 @@
               const path = 'http://localhost:5000/topic/new';
               let dict_data = {
                 title:this.title,
-                content:this.content
+                content:this.content,
+                forum_id:this.forum_id,
               }
               axios.post(path,dict_data)
-                .then(() => {
+                .then((res) => {
+                    // alert('success');
+                    this.$router.push({name:'TopicTree'})
                 })
                 .catch((error) => {
                 })
@@ -63,6 +66,7 @@
         // alert(this.$route.params.topic_data.id);
         // alert(this.$route.params.topic_data.name);
         this.category_name = this.$route.params.topic_data.name;
+        this.forum_id = this.$route.params.topic_data.forum_id;
       }
 
     }

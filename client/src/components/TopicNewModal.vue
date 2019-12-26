@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button    id="show-btn"  pill variant="outline-secondary" @click="showModal">新建话题</b-button>
+    <b-button  pill variant="outline-secondary" @click="showModal">新建话题</b-button>
 
     <b-modal ref="my-modal"  hide-footer title="Using Component Methods">
       <div>
@@ -13,8 +13,8 @@
             disabled-field="notEnabled"
              ></b-form-select>
       </div>
-      <b-button  class="float-right"  id="show-btn"  pill variant="outline-secondary" @click="hideModal">取消</b-button>
-      <b-button  class="float-right"  id="show-btn"  pill variant="outline-secondary" @click="toggleModal">新建</b-button>
+      <b-button  class="float-right"    pill variant="outline-secondary" @click="hideModal">取消</b-button>
+      <b-button  class="float-right"    pill variant="outline-secondary" @click="toggleModal">新建</b-button>
     </b-modal>
   </div>
 </template>
@@ -40,6 +40,7 @@
           if(d['item'] == this.selected){
             topic_data['id'] = d['item'];
             topic_data['name'] = d['name'];
+            topic_data['forum_id'] = d['forum_id'];
           }
         }
         this.$router.push({name:'TopicNew',params:{topic_data:topic_data}})

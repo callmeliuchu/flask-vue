@@ -6,7 +6,7 @@ from playhouse.shortcuts import model_to_dict
 
 
 
-db = SqliteDatabase('/home/liuchu/flask-vue-crud/flaskbb.sqlite')
+db = SqliteDatabase('/home/liuchu/flask-forum/flaskbb.sqlite')
 
 
 class Posts(Model):
@@ -94,6 +94,7 @@ class Topic(Model):
     first_post_id = peewee.IntegerField(default=-1)
     last_post_id = peewee.IntegerField(default=-1)
     hidden_by_id = peewee.IntegerField(default=-1)
+    is_deleted = peewee.IntegerField(default=0)
 
 
 
@@ -167,7 +168,7 @@ from collections import defaultdict
 
 def get_topic_tree():
     dict1 = defaultdict(list)
-    for topic in Topic.select():
+    for topic in Topic.select().where(Topic.is_deleted == 0):
         topic_dict = model_to_dict(topic)
         topic_dict['name'] = topic.title
         dict1[topic.forum_id].append(topic_dict)
@@ -237,17 +238,24 @@ def get_posts_struct(post_id):
 
 
 
+def delete_topic(topic_id):
+    v = Topic.select().where(Topic.id == topic_id).first()
+    if v:
+        v.is_deleted = 1
+        v.save()
+    return {'is_deleted': True}
 
 
 
-v = Topic(
-    forum_id = 1,
-    title = 'hahahha',
-    description = 'aaaaaaaa',
-    username='哈哈哈',
-    user_id=1
-)
-v.save()
+
+# v = Topic(
+#     forum_id = 1,
+#     title = 'hahahha',
+#     description = 'aaaaaaaa',
+#     username='哈哈哈',
+#     user_id=1
+# )
+# v.save()
 
 
 

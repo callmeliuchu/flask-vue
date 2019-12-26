@@ -6,7 +6,8 @@
            {{ data.name }}
         </span>
         <ul v-show="open" v-if="hasChild">
-            <tree-item v-for="(item, index) in data.children" :data="item" :key="index"></tree-item>
+            <tree-item v-for="(item, index) in data.children" :data="item" :key="index"
+                       :custom_method="custom_method"></tree-item>
         </ul>
     </li>
 </template>
@@ -18,6 +19,10 @@ export default {
         data: {
             type: [Object, Array],
             required: true
+        },
+        custom_method:{
+            type: [Function],
+            required: false
         }
     },
     data() {
@@ -35,7 +40,8 @@ export default {
             if(this.hasChild) {
                 this.open = !this.open
             }else{
-               this.$router.push({name:'TopicLatestPosts',params:{id:this.data.id}})
+               // this.$router.push({name:'TopicLatestPosts',params:{id:this.data.id}})
+                this.custom_method(this.data);
             }
         },
     }

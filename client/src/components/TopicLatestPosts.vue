@@ -13,6 +13,11 @@
                 <p>{{ topic.description }}</p>
             </div>
         </div>
+
+
+        <b-dropdown text="管理" variant="secondary">
+          <b-dropdown-item @click="delete_topic(topic)">删除</b-dropdown-item>
+        </b-dropdown>
       </div>
       <hr/>
       <div v-for="(post,index) in posts" :key="index">
@@ -58,6 +63,17 @@
        },
        getDetail(post){
          this.$router.push({name:'PostsStruct',params:{id:post.belong_to_post_id}})
+       },
+       delete_topic(topic){
+           const path = `http://localhost:5000/topic/${topic.id}/delete`;
+           axios.get(path)
+             .then((res) => {
+                 this.$router.push({name:'TopicTree'});
+               })
+             .catch((error) => {
+               // eslint-disable-next-line
+               console.log(error);
+             })
        }
     },
     // methods: {
