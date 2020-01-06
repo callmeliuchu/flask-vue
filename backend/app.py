@@ -4,7 +4,7 @@ import uuid
 from backend.models.model import *
 from backend.models.moment_model import Moment,MomentTag
 from backend.publish.redis_pub import fetch_hot_tags
-from backend.models.new_forum_model import get_team_organization,get_team_topic_question_tree,get_question_posts
+from backend.models.new_forum_model import get_team_organization,get_team_topic_question_tree,get_question_posts,delete_question
 
 
 
@@ -173,6 +173,13 @@ def topic_posts(topic_id):
 
 
 
+@app.route('/question/<int:question_id>',methods=['GET'])
+def question_posts(question_id):
+    return jsonify(get_question_posts(question_id))
+
+
+
+
 @app.route('/topictree',methods=['GET'])
 def topic_tree():
     tree = get_topic_tree()
@@ -207,10 +214,18 @@ def topic_new():
     return jsonify(data)
 
 
-@app.route('/topic/<int:topic_id>/delete',methods=['GET'])
-def topic_delete(topic_id):
-    data = delete_topic(topic_id)
+# @app.route('/topic/<int:topic_id>/delete',methods=['GET'])
+# def topic_delete(topic_id):
+#     data = delete_topic(topic_id)
+#     return jsonify(data)
+
+
+@app.route('/question/<int:question_id>/delete',methods=['GET'])
+def topic_delete(question_id):
+    data = delete_question(question_id)
     return jsonify(data)
+
+
 
 @app.route('/team/organization',methods=['GET'])
 def team_organization():
@@ -229,6 +244,9 @@ def main_page():
 def get_topic_tree_by_team_id(team_id):
     topic_tree = get_team_topic_question_tree(team_id)
     return jsonify(topic_tree)
+
+
+
 
 
 

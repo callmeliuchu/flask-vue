@@ -6,7 +6,7 @@ from playhouse.shortcuts import model_to_dict
 
 
 
-db = SqliteDatabase('/home/liuchu/flask-forum/flask_forum.sqlite')
+db = SqliteDatabase('../../flask-forum/flask_forum.sqlite')
 
 
 class Posts(Model):
@@ -264,3 +264,9 @@ def get_question_posts(question_id):
     return data
 
 
+def delete_question(question_id):
+    v = Question.select().where(Question.id == question_id).first()
+    if v:
+        v.is_deleted = 1
+        v.save()
+    return {'is_deleted': True}

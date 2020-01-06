@@ -5,18 +5,18 @@
       <div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <p>{{ topic.title }}</p>
+                <p>{{ question.title }}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <p>{{ topic.description }}</p>
+                <p>{{ question.description }}</p>
             </div>
         </div>
 
 
         <b-dropdown text="管理" variant="secondary">
-          <b-dropdown-item @click="delete_topic(topic)">删除</b-dropdown-item>
+          <b-dropdown-item @click="delete_question(question)">删除</b-dropdown-item>
         </b-dropdown>
       </div>
       <hr/>
@@ -39,21 +39,22 @@
 
 <script>
   import axios from 'axios';
+  import navhead from './Head'
 
   export default {
      data(){
        return {
          id:'',
-         topic:{},
+         question:{},
          posts:[]
        }
      },
     methods:{
-       getPostsByTopic(){
-         const path = `http://localhost:5000/topic/${this.id}`;
+       getPostsByQuestion(){
+         const path = `http://localhost:5000/question/${this.id}`;
          axios.get(path)
            .then((res) => {
-             this.topic = res.data.topic;
+             this.question = res.data.question;
              this.posts = res.data.posts;
              })
            .catch((error) => {
@@ -64,8 +65,8 @@
        getDetail(post){
          this.$router.push({name:'PostsStruct',params:{id:post.belong_to_post_id}})
        },
-       delete_topic(topic){
-           const path = `http://localhost:5000/topic/${topic.id}/delete`;
+       delete_question(question){
+           const path = `http://localhost:5000/question/${question.id}/delete`;
            axios.get(path)
              .then((res) => {
                  this.$router.push({name:'TopicTree'});
@@ -89,7 +90,7 @@
        // id = this.$router.params.id;
       // alert();
       this.id = this.$route.params.id;
-      this.getPostsByTopic();
+      this.getPostsByQuestion();
     }
 
   }

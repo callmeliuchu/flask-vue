@@ -66,7 +66,7 @@
           //     }
           // },
           test_f(data){
-              this.$router.push({name:'TopicLatestPosts',params:{id:data.id}})
+              this.$router.push({name:'QuestionLatestPosts',params:{id:data.id}})
           },
           get_topic_tree_by_team(data){
               let team_id = data.id;

@@ -6,7 +6,7 @@ from playhouse.shortcuts import model_to_dict
 
 
 
-db = SqliteDatabase('/home/liuchu/flask-forum/flaskbb.sqlite')
+db = SqliteDatabase('../../flask-forum/flaskbb.sqlite')
 
 
 class Posts(Model):
@@ -32,6 +32,7 @@ class Posts(Model):
 class Categories(Model):
     id = peewee.IntegerField()
     title = peewee.CharField(max_length=255)
+
 
 
     class Meta:

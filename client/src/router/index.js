@@ -7,11 +7,14 @@ import Moment from '@/components/Moment';
 import OrgTag from '@/components/OrgTag';
 import Login from '@/components/Login';
 import Home from "@/components/Home";
-import TopicLatestPosts from "@/components/TopicLatestPosts";
+import QuestionLatestPosts from "@/components/QuestionLatestPosts";
 import TopicTree from "@/components/TopicTree";
 import PostsStruct from "@/components/PostsStruct";
 import Post from '@/components/Post';
 import TopicNew from '@/components/TopicNew';
+import Boss from  '@/components/Boss';
+import Tree from '@/view/tree'
+import SlotTree from '@/view/slotTree'
 
 Vue.use(Router);
 
@@ -53,9 +56,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/topic_posts/:id',
-      name: 'TopicLatestPosts',
-      component: TopicLatestPosts,
+      path: '/question_posts/:id',
+      name: 'QuestionLatestPosts',
+      component: QuestionLatestPosts,
     },
     {
       path: '/',
@@ -77,6 +80,19 @@ export default new Router({
       name: 'TopicNew',
       component:TopicNew,
     },
+    {
+      path:'/boss',
+      name:'Boss',
+      component:Boss,
+    },{
+      path: '/render',
+      name: 'RenderTree',
+      component: Tree
+    },{
+      path: '/slot',
+      name: 'SlotTree',
+      component: SlotTree
+    }
   ],
   mode: 'hash',
 });

@@ -9,7 +9,8 @@ import router from './router';
 import Editor from 'v-markdown-editor'
 import 'vue-topo/dist/vue-topo.min.css'
 import Vtopo from 'vue-topo'
-
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 
 
@@ -17,7 +18,7 @@ import Vtopo from 'vue-topo'
 // global register
 
 Vue.config.productionTip = false;
-
+Vue.use(ElementUI)
 Vue.use(Editor);
 Vue.use(BootstrapVue)
 // Vue.use(Vtopo)
@@ -28,6 +29,6 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>',
+  template: '<App/>'
 });
 
