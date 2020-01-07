@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0fe70516-186b-4694-a314-6c6d8e5d19d3" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/models/new_forum_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/new_forum_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TopicTree.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopicTree.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Boss.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Boss.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_forum.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/flask_forum.sqlite" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,6 +50,21 @@
         <item name="flask_forum" type="feb32156:DbDataSourceImpl" />
         <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="flaskbb" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="flaskbb" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="flaskbb" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
     </expand>
     <select />
   </component>
@@ -71,24 +85,25 @@
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/client/src" />
+      <recent name="$PROJECT_DIR$/client/src/data" />
+      <recent name="$PROJECT_DIR$/client/src/components" />
+      <recent name="$PROJECT_DIR$/client/src/utils" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend" />
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/client" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/src/components" />
-      <recent name="$PROJECT_DIR$/client" />
-      <recent name="$PROJECT_DIR$/client/src" />
-      <recent name="$PROJECT_DIR$/client/src/utils" />
-      <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -103,7 +118,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.model">
+  <component name="RunManager" selected="Python.new_forum_model">
     <configuration name="model" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="flask-vue-crud" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,6 +163,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="new_forum_model" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="flask-vue-crud" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/models/new_forum_model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="redis_pub" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="flask-vue-crud" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,9 +211,11 @@
       <item itemvalue="Python.model" />
       <item itemvalue="Python.moment_model" />
       <item itemvalue="Python.redis_pub" />
+      <item itemvalue="Python.new_forum_model" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.new_forum_model" />
         <item itemvalue="Python.model" />
         <item itemvalue="Python.redis_pub" />
         <item itemvalue="Python.moment_model" />
@@ -187,16 +226,7 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@9ee93b46" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@4562571" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -225,7 +255,8 @@
       <workItem from="1575427970185" duration="599000" />
       <workItem from="1577063516565" duration="1280000" />
       <workItem from="1577156767838" duration="12554000" />
-      <workItem from="1577343048441" duration="11451000" />
+      <workItem from="1577343048441" duration="19030000" />
+      <workItem from="1577951626822" duration="22849000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1569490325505</created>
@@ -262,7 +293,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577352673548</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update">
+      <created>1577354859898</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1577354859898</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update">
+      <created>1578298926544</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1578298926545</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,5 +329,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/flask_forum$new_forum_model.coverage" NAME="new_forum_model Coverage Results" MODIFIED="1578386269417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/models" />
   </component>
 </project>

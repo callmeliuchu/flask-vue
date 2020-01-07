@@ -6,7 +6,7 @@ from playhouse.shortcuts import model_to_dict
 
 
 
-db = SqliteDatabase('../../flask-forum/flask_forum.sqlite')
+db = SqliteDatabase('/home/liuchu/flask-forum/flask_forum.sqlite')
 
 
 class Posts(Model):
@@ -156,6 +156,7 @@ def drop_table(table):
 
 
 from collections import defaultdict
+
 def get_team_organization():
     r = Team.select()
     map = defaultdict(list)
@@ -177,17 +178,28 @@ def get_team_organization():
     data = [team_info[root] for root in roots]
 
     queue = data[:]
+    max_id = -1
+
     while queue:
         info = queue.pop(0)
+        info['isEdit'] = False
+        info['pid'] = info['id']
+        info['remark']=''
         _id = info['id']
+        if max_id < _id:
+            max_id = _id
         for child_id in map[_id]:
             child_info = team_info[child_id]
             info['children'].append(child_info)
             queue.append(child_info)
 
+    # maxexpandId: 4,
+    # treelist: []
+    result = {}
+    result['maxexpandId'] = max_id
+    result['treelist'] = data
 
-
-    return data
+    return result
 
 
 
@@ -270,3 +282,38 @@ def delete_question(question_id):
         v.is_deleted = 1
         v.save()
     return {'is_deleted': True}
+
+
+
+# team_organization = {"maxexpandId":4,"treelist":[{"id":5,"name":"高老师三组","pid":"","isEdit":False,"children":[{"id":6,"name":"第一组","pid":5,"isEdit":False,"children":[]},{"id":7,"name":"第二组","pid":5,"isEdit":False,"children":[]},{"id":8,"name":"第三组","pid":5,"isEdit":False,"children":[]},{"id":9,"name":"第四组","pid":5,"isEdit":False,"children":[]},{"id":10,"name":"第五组","pid":5,"isEdit":False,"children":[{"id":11,"name":"分队1","pid":10,"isEdit":False,"children":[]}]}]}]}
+
+def insert_team_organization(team_organization):
+    tree = team_organization['treelist']
+    queue = []
+    sqls = []
+    for root in tree:
+        queue.append(root)
+        data = {}
+        data['name'] = root['name']
+        data['id'] = root['id']
+        data['parent_id'] = -1
+        sqls.append(data)
+
+    while queue:
+        node = queue.pop(0)
+
+        for child in node['children']:
+            data = {}
+            data['id'] = child['id']
+            data['name'] = child['name']
+            data['parent_id'] = node['id']
+            sqls.append(data)
+            queue.append(child)
+
+    with db.atomic():
+        for i in range(0, len(sqls), 100):
+            # 每次批量插入100条，分成多次插入
+            Team.insert_many(sqls[i:i + 100]).execute()
+
+# insert_team_organization(team_organization)
+

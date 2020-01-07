@@ -1,7 +1,7 @@
 <template>
   <div class="expand">
     <el-button @click="handleSubmit">提交</el-button>
-    <tree :api_data="test_data"></tree>
+    <tree :api_data="team_organization"></tree>
   </div>
 </template>
 
@@ -9,15 +9,13 @@
 
 <script>
   import tree from  '../view/tree'
+  import axios from 'axios'
 
   export default {
       data() {
           return {
-              'test_data': {
-                  maxexpandId: 0,
-                  treelist: []
-              }
-
+              test_data: {'maxexpandId':0,'treelist':[]},
+              team_organization:{'maxexpandId':0,'treelist':[]},
           }
       },
       components:{
@@ -25,11 +23,26 @@
       },
       methods:{
           handleSubmit(){
-           alert(JSON.stringify(this.test_data));
+           // alert(JSON.stringify(this.test_data));
+           console.log(JSON.stringify(this.team_organization));
+           // this.getTeamOrganization();
+          },
+          getTeamOrganization(){
+            const path = `http://localhost:5000/team/organization`;
+            axios.get(path)
+             .then((res) => {
+               this.team_organization = res.data;
+               })
+             .catch((error) => {
+               console.log(error);
+               })
           }
+
+      },
+
+      created(){
+          this.getTeamOrganization();
       }
-
-
   }
 </script>
 
