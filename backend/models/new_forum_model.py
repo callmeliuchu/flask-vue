@@ -288,6 +288,7 @@ def delete_question(question_id):
 # team_organization = {"maxexpandId":4,"treelist":[{"id":5,"name":"高老师三组","pid":"","isEdit":False,"children":[{"id":6,"name":"第一组","pid":5,"isEdit":False,"children":[]},{"id":7,"name":"第二组","pid":5,"isEdit":False,"children":[]},{"id":8,"name":"第三组","pid":5,"isEdit":False,"children":[]},{"id":9,"name":"第四组","pid":5,"isEdit":False,"children":[]},{"id":10,"name":"第五组","pid":5,"isEdit":False,"children":[{"id":11,"name":"分队1","pid":10,"isEdit":False,"children":[]}]}]}]}
 
 def insert_team_organization(team_organization):
+    Team.delete().execute()
     tree = team_organization['treelist']
     queue = []
     sqls = []

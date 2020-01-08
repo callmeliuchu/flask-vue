@@ -4,7 +4,7 @@ import uuid
 from backend.models.model import *
 from backend.models.moment_model import Moment,MomentTag
 from backend.publish.redis_pub import fetch_hot_tags
-from backend.models.new_forum_model import get_team_organization,get_team_topic_question_tree,get_question_posts,delete_question
+from backend.models.new_forum_model import get_team_organization,get_team_topic_question_tree,get_question_posts,delete_question,insert_team_organization
 
 
 
@@ -214,6 +214,10 @@ def topic_new():
     return jsonify(data)
 
 
+
+
+
+
 # @app.route('/topic/<int:topic_id>/delete',methods=['GET'])
 # def topic_delete(topic_id):
 #     data = delete_topic(topic_id)
@@ -246,7 +250,22 @@ def get_topic_tree_by_team_id(team_id):
     return jsonify(topic_tree)
 
 
-
+@app.route('/team/new',methods=['POST'])
+def new_team_organization():
+    post_data = request.get_json()
+    insert_team_organization(post_data)
+    return jsonify({'success':True})
+    # v = Topic(
+    #     forum_id = post_data['forum_id'],
+    #     title = post_data['title'],
+    #     description = post_data['content'],
+    #     username='哈哈哈',
+    #     user_id=1
+    # )
+    # v.save()
+    # data = {}
+    # data['status'] = 'success'
+    # return jsonify(data)
 
 
 

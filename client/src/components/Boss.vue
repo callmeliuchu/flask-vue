@@ -1,7 +1,7 @@
 <template>
   <div class="expand">
     <el-button @click="handleSubmit">提交</el-button>
-    <tree :api_data="team_organization"></tree>
+    <tree :api_data.sync="team_organization"></tree>
   </div>
 </template>
 
@@ -21,24 +21,49 @@
       components:{
           tree
       },
+
       methods:{
           handleSubmit(){
-           // alert(JSON.stringify(this.test_data));
-           console.log(JSON.stringify(this.team_organization));
+            const path = `http://localhost:5000/team/new`;
+              axios.post(path,this.team_organization)
+                .then((res) => {
+                    alert('success');
+                    // this.$router.push({name:'TopicTree'})
+                })
+                .catch((error) => {
+                })
+
+
            // this.getTeamOrganization();
           },
           getTeamOrganization(){
             const path = `http://localhost:5000/team/organization`;
+            // let data1 = null;
+            // alert(1);
             axios.get(path)
              .then((res) => {
-               this.team_organization = res.data;
+                 // alert(JSON.stringify(res.data));
+                 this.team_organization = res.data;
+                 // alert(2);
+                 // alert(data1);
+                 // this.$set(this.team_organization,'maxexpandId',res.data['maxexpandId'])
+                 // this.$set(this.team_organization,'treelist',res.data['treelist'])
+              // this.team_organization.maxexpandId=res.data['maxexpandId'];
+              // this.team_organization.treelist=res.data['treelist'];
                })
              .catch((error) => {
+                 alert(error);
                console.log(error);
                })
+              // alert(3);
           }
 
+
       },
+      //
+      // mounted(){
+      //     this.getTeamOrganization();
+      // },
 
       created(){
           this.getTeamOrganization();

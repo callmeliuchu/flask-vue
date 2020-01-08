@@ -25,10 +25,10 @@ import TreeRender from './tree_render'
     props:['api_data'],
     data(){
       return{
-        maxexpandId: this.api_data.maxexpandId,//新增节点开始id
-        non_maxexpandId: this.api_data.maxexpandId,//新增节点开始id(不更改)
+        maxexpandId: 0,//新增节点开始id
+        non_maxexpandId: 0,//新增节点开始id(不更改)
         isLoadingTree: false,//是否加载节点树
-        setTree: this.api_data.treelist,//节点树数据
+        setTree: [],//节点树数据
         defaultProps: {
           children: 'children',
           label: 'name'
@@ -39,6 +39,18 @@ import TreeRender from './tree_render'
     mounted(){
       console.log(this.api_data)
       this.initExpand()
+    },
+    watch:{
+        'api_data':function(n, o){
+            // alert(JSON.stringify(n));
+            this.maxexpandId=n.maxexpandId;
+            this.non_maxexpandId=n.maxexpandId;
+            this.setTree=n.treelist;
+            this.initExpand();
+            // alert(JSON.stringify(n.setTree));
+        },
+        deep: true,
+        // immediate: true
     },
     methods: {
       initExpand(){
