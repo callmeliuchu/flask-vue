@@ -1,8 +1,20 @@
 <template>
-  <div class="expand">
-    <el-button @click="handleSubmit">提交</el-button>
-    <tree :api_data.sync="team_organization"></tree>
-  </div>
+
+  <el-container>
+    <el-header>
+        <navhead></navhead>
+    </el-header>
+    <el-container>
+        <el-aside width="200px">
+          <el-button @click="handleSubmit">提交</el-button>
+          <tree :api_data.sync="team_organization"></tree>
+        </el-aside>
+       <el-container>
+            <el-main>Main</el-main>
+           <el-footer>Footer</el-footer>
+        </el-container>
+    </el-container>
+  </el-container>
 </template>
 
 
@@ -10,6 +22,7 @@
 <script>
   import tree from  '../view/tree'
   import axios from 'axios'
+  import navhead from './Head'
 
   export default {
       data() {
@@ -19,7 +32,8 @@
           }
       },
       components:{
-          tree
+          tree,
+          navhead
       },
 
       methods:{

@@ -122,6 +122,8 @@ class TeamMembers(Model):
 
 class Users(Model):
     username = peewee.CharField(max_length=200)
+    password = peewee.CharField(max_length=120)
+    email = peewee.CharField(max_length=200)
 
     class Meta:
         database = db
@@ -136,6 +138,9 @@ class TeamTopics(Model):
     class Meta:
         database = db
         db_table = 'team_topics'
+
+
+
 
 
 
@@ -317,4 +322,13 @@ def insert_team_organization(team_organization):
             Team.insert_many(sqls[i:i + 100]).execute()
 
 # insert_team_organization(team_organization)
+
+from werkzeug import check_password_hash
+
+def CheckUser(user):
+    user_name_or_email = user['user']
+    password = user['password']
+    u = Users.select().where(Users.username == user_name_or_email or Users.email == user_name_or_email).first()
+    if not u:
+        return False
 

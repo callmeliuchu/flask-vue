@@ -5,7 +5,6 @@ import Books from '@/components/Books';
 import Posts from '@/components/Posts';
 import Moment from '@/components/Moment';
 import OrgTag from '@/components/OrgTag';
-import Login from '@/components/Login';
 import Home from "@/components/Home";
 import QuestionLatestPosts from "@/components/QuestionLatestPosts";
 import TopicTree from "@/components/TopicTree";
@@ -15,6 +14,10 @@ import TopicNew from '@/components/TopicNew';
 import Boss from  '@/components/Boss';
 import Tree from '@/view/tree'
 import SlotTree from '@/view/slotTree'
+import Register from '@/login/Register.vue'
+import Login from '@/login/Login.vue'
+import Team from '@/team/Team.vue'
+
 
 Vue.use(Router);
 
@@ -44,11 +47,6 @@ export default new Router({
       path: '/orgtag',
       name: 'OrgTag',
       component: OrgTag
-    },
-    {
-      path:'/login',
-      name:"Login",
-      component:Login
     },
     {
       path: "/home",
@@ -92,6 +90,21 @@ export default new Router({
       path: '/slot',
       name: 'SlotTree',
       component: SlotTree
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/team',
+      name: 'Team',
+      component: Team
     }
   ],
   mode: 'hash',
