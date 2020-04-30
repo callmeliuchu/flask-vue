@@ -17,7 +17,7 @@ import SlotTree from '@/view/slotTree'
 import Register from '@/login/Register.vue'
 import Login from '@/login/Login.vue'
 import Team from '@/team/Team.vue'
-
+import UserTeams from '@/team/UserTeams.vue'
 
 Vue.use(Router);
 
@@ -105,6 +105,11 @@ export default new Router({
       path: '/team',
       name: 'Team',
       component: Team
+    },
+    {
+      path: '/user_teams',
+      name: 'UserTeams',
+      component: UserTeams
     }
   ],
   mode: 'hash',

@@ -1,10 +1,12 @@
-<template>
+[<template>
   <el-container>
     <el-header></el-header>
       <el-main>
         <el-row :gutter="10" v-for="i in [1,2,3,5,3,45,6,3,22,32,2,3,22,2,2,33,32,22,3]" :justify="center">
           <el-col :span="5" v-for="j in [1,2,4,5]" :push="3">
-           <member></member>
+            <el-card>
+              <member :avatar_url="circleUrl" :team_name="'好好'" :team_type="'创建的'"></member>
+            </el-card>
          </el-col>
         </el-row>
       </el-main>
@@ -32,9 +34,4 @@
       margin-bottom: 0;
     }
   }
-
-  .el-main {
-    text-align: center;
-  }
-
 </style>

@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fe70516-186b-4694-a314-6c6d8e5d19d3" name="Default" comment="update">
-      <change afterPath="$PROJECT_DIR$/client/src/common/Head.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/login/Login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/login/Register.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/team/MemberCard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/team/Team.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/team/UserTeams.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/new_forum_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/new_forum_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Boss.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Boss.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/team/MemberCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/team/MemberCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/team/Team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/team/Team.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -266,7 +260,7 @@
       <workItem from="1577951626822" duration="37582000" />
       <workItem from="1578626435189" duration="17262000" />
       <workItem from="1583284235168" duration="597000" />
-      <workItem from="1588137210754" duration="7931000" />
+      <workItem from="1588137210754" duration="16961000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1569490325505</created>
@@ -331,7 +325,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578464571858</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update">
+      <created>1588145570379</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1588145570379</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update">
+      <created>1588147267942</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1588147267942</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
