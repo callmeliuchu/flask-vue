@@ -24,7 +24,7 @@
           </el-col>
         </el-row>
 
-        <el-row v-for="item in arr">
+        <el-row v-for="(item,index) in arr">
           <el-col :span="5" :push="3">
            <member :avatar_url="item.team.url" :team_name="item.team.team_name" :team_type="item.team.team_type"></member>
          </el-col>
@@ -37,7 +37,7 @@
              <div>{{item.updated_time}}</div>
          </el-col>
           <el-col :span="5" :push="3">
-            <i class="el-icon-delete"></i>
+            <i class="el-icon-delete" v-on:click="handleDelete(index)"></i>
           </el-col>
         </el-row>
 
@@ -61,6 +61,11 @@
     },
       components:{
         member
+      },
+      methods:{
+        handleDelete(index){
+            this.arr.splice(index,1)
+        }
       }
   }
 

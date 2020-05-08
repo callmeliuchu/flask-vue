@@ -2,6 +2,27 @@
 <div>
      <el-col :span="8">
          <div class="block" v-on:click="handleAvatar()"><el-avatar :size="70" :src="url"></el-avatar></div>
+       <el-dialog
+          title="更换封面"
+          :visible.sync="dialogVisible"
+          width="15%"
+          :before-close="handleClose">
+
+         <el-upload
+            class="avatar-uploader"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="handleUpload()">确 定</el-button>
+          </span>
+        </el-dialog>
      </el-col>
      <el-col :span="15">
        <div v-if="!is_edit">
@@ -28,10 +49,13 @@
     props: ['avatar_url','team_name','team_type'],
       data(){
         return {
-            'url':'',
+            'url':'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
             'type':'',
             'name':'',
-            'is_edit':false
+            'is_edit':false,
+            'dialogVisible':false,
+            'imageUrl': ''
+
         }
       },
       created() {
@@ -42,7 +66,7 @@
       methods:{
         handleAvatar(){
             if(this.is_edit){
-                alert(11111)
+                this.dialogVisible = true;
             }
         },
           makeEdit(){
@@ -53,7 +77,61 @@
           },
           handleOut(){
             this.is_edit = false;
+          },
+          handleClose(done) {
+            this.$confirm('确认关闭？')
+              .then(_ => {
+                done();
+              })
+              .catch(_ => {});
+         },
+          handleAvatarSuccess(res, file) {
+            this.imageUrl = URL.createObjectURL(file.raw);
+            this.url = this.imageUrl;
+          },
+          handleUpload(){
+            this.url = this.imageUrl;
+            this.dialogVisible = false;
+          },
+          beforeAvatarUpload(file) {
+            const isJPG = file.type === 'image/jpeg';
+            const isLt2M = file.size / 1024 / 1024 < 2;
+
+            if (!isJPG) {
+              this.$message.error('上传头像图片只能是 JPG 格式!');
+            }
+            if (!isLt2M) {
+              this.$message.error('上传头像图片大小不能超过 2MB!');
+            }
+            return isJPG && isLt2M;
           }
       }
   };
 </script>
+
+
+<style>
+   .avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+</style>
