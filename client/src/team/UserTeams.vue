@@ -36,6 +36,9 @@
               <div>更新时间</div>
              <div>{{item.updated_time}}</div>
          </el-col>
+          <el-col :span="5" :push="3">
+            <i class="el-icon-delete"></i>
+          </el-col>
         </el-row>
 
       </el-main>
