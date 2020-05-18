@@ -58,6 +58,17 @@
 
         }
       },
+      watch:{
+          avatar_url(n,o){ //n为新值,o为旧值;
+            this.url = n;
+          },
+          team_name(n,o){
+              this.name = n;
+          },
+          team_type(n,o){
+              this.type = n;
+          }
+      },
       created() {
         this.url = this.avatar_url;
         this.name = this.team_name;
