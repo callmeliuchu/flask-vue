@@ -116,7 +116,7 @@
              this.filter_arr = ['我创建的'];
           },
           handleCreate(){
-            this.arr.push({'url':'','team_name':'默认名字','team_type':'我创建的','count':0,'updated_time':Date.now().toString()});
+            this.arr.splice(0,0,{'url':'','team_name':'默认名字','team_type':'我创建的','count':0,'updated_time':Date.now().toString()});
             // let obj = this.arr[this.arr.length-1];
             // for(let i=this.arr.length-1;i>0;i--){
             //     this.arr[i] = this.arr[i-1];
