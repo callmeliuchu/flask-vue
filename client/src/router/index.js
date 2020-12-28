@@ -18,6 +18,7 @@ import Register from '@/login/Register.vue'
 import Login from '@/login/Login.vue'
 import Team from '@/team/Team.vue'
 import UserTeams from '@/team/UserTeams.vue'
+import QuestionList from '@/questions/QuestionList.vue'
 
 Vue.use(Router);
 
@@ -110,6 +111,11 @@ export default new Router({
       path: '/user_teams',
       name: 'UserTeams',
       component: UserTeams
+    },
+    {
+      path: '/questions',
+      name: 'QuestionList',
+      component: QuestionList
     }
   ],
   mode: 'hash',

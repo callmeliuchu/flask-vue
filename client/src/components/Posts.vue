@@ -55,5 +55,6 @@
       this.getPosts()
     }
 
+
   }
 </script>
